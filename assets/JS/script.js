@@ -10,11 +10,11 @@ var answersList =
   document.querySelector('#answers')
 var questions = [
   {
-    question: 'When did the Avalanche move to Colorado?',
+    question: 'When did the avalanche move to Colorado?',
     answers: [
       {
         answer: '1979',
-        correct: false
+        correct: false,
       },
       {
         answer: '1995',
@@ -22,49 +22,49 @@ var questions = [
       },
       {
         answer: '1967',
-        correct: false
+        correct: false,
       },
       {
         answer: '1997',
-        correct: false
+        correct: false,
       },
       {
         answer: '1972',
-        correct: false
+        correct: false,
       }
     ]
   },
   {
-    question: 'How many times have the avalance been in the playoffs?',
+    question: 'How many times have the Avalance been in the playoffs?',
     answers: [
       {
         answer: '26',
-        correct: correct
-      },
-      {
-        answer: '41',
         correct: true,
       },
       {
+        answer: '41',
+        correct: false,
+      },
+      {
         answer: '4',
-        correct: false
+        correct: false,
       },
       {
         answer: '25',
-        correct: false
+        correct: false,
       },
       {
         answer: '30',
-        correct: false
+        correct: false,
       }
     ]
-  }
-  {
-    question: 'Who is the owner of the Colorado Avalanche?',
+  },
+{
+  question: 'Who is the owner of the Colorado Avalanche?',
     answers: [
       {
         answer: 'Joe Sakic',
-        correct: false
+        correct: false,
       },
       {
         answer: 'Jared Bednar',
@@ -72,24 +72,24 @@ var questions = [
       },
       {
         answer: 'Gabriel Landeskog',
-        correct: false
+        correct: false,
       },
       {
         answer: 'Greg Sherman',
-        correct: false
+        correct: false,
       },
       {
         answer: 'Ann Walton Kroenke',
-        correct: true
+        correct: true,
       }
     ]
-  }
+  },
   {
     question: 'How many Stanley Cups have the Avalanche won?',
     answers: [
       {
         answer: '5',
-        correct: false
+        correct: false,
       },
       {
         answer: '3',
@@ -97,23 +97,24 @@ var questions = [
       },
       {
         answer: '1',
-        correct: false
+        correct: false,
       },
       {
         answer: '2',
-        correct: correct
+        correct: true,
       },
       {
         answer: '0',
-        correct: false      }
+        correct: false,      
+      }
     ]
-  }
-  {
+  },
+ {
     question: 'What was the name of the Avalanche before they moved to Colorado and changed their name?',
     answers: [
       {
         answer: 'Hartford Whalers',
-        correct: false
+        correct: false,
       },
       {
         answer: 'Edmonton Oilers',
@@ -121,15 +122,15 @@ var questions = [
       },
       {
         answer: 'Quebec Nordiques',
-        correct: correct
+        correct: true,
       },
       {
         answer: 'Winnipeg Jets',
-        correct: false
+        correct: false,
       },
       {
         answer: 'New York Rangers',
-        correct: false
+        correct: false,
       }
     ]
   }
