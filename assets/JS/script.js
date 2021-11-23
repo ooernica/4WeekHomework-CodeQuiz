@@ -4,10 +4,12 @@
 // Show the next question
 // Console.log if it was right or wrong
 
+
 var questionHeading = 
   document.querySelector('#question')
 var answersList = 
   document.querySelector('#answers')
+
 var questions = [
   {
     question: 'When did the Avalanche move to Colorado?',
@@ -34,6 +36,7 @@ var questions = [
       }
     ]
   },
+
   {
     question: 'How many times have the Avalance been in the playoffs?',
     answers: [
@@ -59,6 +62,7 @@ var questions = [
       }
     ]
   },
+
 {
   question: 'Who is the owner of the Colorado Avalanche?',
     answers: [
@@ -135,6 +139,7 @@ var questions = [
     ]
   }
 ]
+
 var currentQuestion = 0
 
 // My job is to change the question id and answer id
@@ -173,10 +178,10 @@ function showAnswers() {
 function checkAnswer(correct) {
   if (correct === 'true') {
     // Display correct
-    alert('Correct')
+    alert ("GOOOOAL!)";
   } else {
     // Display incorrect
-    alert('Incorrect')
+    alert ('Ugh! A missed opportunity!');
   }
   currentQuestion++
   if (currentQuestion > questions.length - 1) {
@@ -187,18 +192,37 @@ function checkAnswer(correct) {
   }
 }
 
+// THIS IS BROKEN -- the intent is to try display correct/incorrect text by creating div under the questions/answer
+// area + showing text. 
+
+  // function validateYES () {
+  //   const newDiv = document.createElement ("div");
+  //   const newContent =document.createTextNode("GOOOOAAAL!");
+  //   newDiv.appendChild(newContent);
+  //   const currentDiv = document.getElementById("container");
+  //   document.body.insertAfter(newDiv, currentDiv);
+  // }
+
+  // function validateNO () {
+  //   const newDiv = document.createElement ("div");
+  //   const newContent =document.createTextNode("Ugh! What a missed opportunity!"");
+  //   newDiv.appendChild(newContent);
+  //   const currentDiv = document.getElementById("container");
+  //   document.body.insertAfter(newDiv, currentDiv);
+  // }
+
 showQuestion()
 showAnswers()
 
 
+// PSEUDO CODE!!
 
+  // Keep track of the score
+  // Save the score to localStorage when the game is done
+  // Subtrack the time if you get the wrong answer
 
-// Keep track of the score
-// Save the score to localStorage when the game is done
-// Subtrack the time if you get the wrong answer
+  // Instead of alert('all done') change the page to say all done
+  // and show all the high scores
 
-// Instead of alert('all done') change the page to say all done
-// and show all the high scores
-
-// Display the time somewhere
-// Add a timer...
+  // Display the time somewhere
+  // Add a timer...
