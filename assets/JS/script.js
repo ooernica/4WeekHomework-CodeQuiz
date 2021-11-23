@@ -10,7 +10,7 @@ var answersList =
   document.querySelector('#answers')
 var questions = [
   {
-    question: 'When did the avalanche move to Colorado?',
+    question: 'When did the Avalanche move to Colorado?',
     answers: [
       {
         answer: '1979',
@@ -139,7 +139,7 @@ var currentQuestion = 0
 
 // My job is to change the question id and answer id
 function showQuestion() {
-  // Set the questoin heading text = the current question's question
+  // Set the question heading text = the current question's question
   questionHeading.textContent = questions[currentQuestion].question
 }
 
@@ -190,10 +190,15 @@ function checkAnswer(correct) {
 showQuestion()
 showAnswers()
 
-// Add a timer...
+
+
+
 // Keep track of the score
 // Save the score to localStorage when the game is done
+// Subtrack the time if you get the wrong answer
+
 // Instead of alert('all done') change the page to say all done
 // and show all the high scores
-// Subtrack the time if you get the wrong answer
+
 // Display the time somewhere
+// Add a timer...
