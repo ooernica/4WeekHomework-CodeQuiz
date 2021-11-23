@@ -178,10 +178,10 @@ function showAnswers() {
 function checkAnswer(correct) {
   if (correct === 'true') {
     // Display correct
-    alert ("GOOOOAL!)";
+    alert ('GOOOOAL!')
   } else {
     // Display incorrect
-    alert ('Ugh! A missed opportunity!');
+    alert ('Ugh! A missed opportunity!')
   }
   currentQuestion++
   if (currentQuestion > questions.length - 1) {
@@ -192,28 +192,9 @@ function checkAnswer(correct) {
   }
 }
 
-// THIS IS BROKEN -- the intent is to try display correct/incorrect text by creating div under the questions/answer
-// area + showing text. 
-
-  // function validateYES () {
-  //   const newDiv = document.createElement ("div");
-  //   const newContent =document.createTextNode("GOOOOAAAL!");
-  //   newDiv.appendChild(newContent);
-  //   const currentDiv = document.getElementById("container");
-  //   document.body.insertAfter(newDiv, currentDiv);
-  // }
-
-  // function validateNO () {
-  //   const newDiv = document.createElement ("div");
-  //   const newContent =document.createTextNode("Ugh! What a missed opportunity!"");
-  //   newDiv.appendChild(newContent);
-  //   const currentDiv = document.getElementById("container");
-  //   document.body.insertAfter(newDiv, currentDiv);
-  // }
 
 showQuestion()
 showAnswers()
-
 
 // PSEUDO CODE!!
 
