@@ -9,6 +9,8 @@ var questionHeading =
   document.querySelector('#question')
 var answersList = 
   document.querySelector('#answers')
+var answerScore=0
+
 
 var questions = [
   {
@@ -156,7 +158,7 @@ function showAnswers() {
   var array = questions[currentQuestion].answers
   for(var i = 0; i < array.length; i++) {
     answersList.innerHTML += 
-      '<li class="answer"><button' +
+      '<li><button class="answer"' +
       ' data-correct="' + 
       array[i].correct + '">' + 
       array[i].answer + 
@@ -178,50 +180,64 @@ function showAnswers() {
 function checkAnswer(correct) {
   if (correct === 'true') {
     // Display correct
-    alert ('GOOOOAL!')
+    validateYES()
+    answerScore=answerScore++
   } else {
     // Display incorrect
-    alert ('Ugh! A missed opportunity!')
+    validateNO()
   }
   currentQuestion++
   if (currentQuestion > questions.length - 1) {
-    alert('all done')
+    document.getElementById('home').style.visibility = "visibility"
   } else {
+    setTimeout(function() { 
+      document.querySelector('#displayAnswer').innerHTML = ""
+    }, 2000)
     showQuestion()
     showAnswers()
   }
 }
 
-// THIS IS BROKEN -- the intent is to try display correct/incorrect text by creating div under the questions/answer
-// area + showing text. 
+// display correct/incorrect text by creating div under the questions/answer area + showing text. 
 
-  // function validateYES () {
-  //   const newDiv = document.createElement ("div");
-  //   const newContent =document.createTextNode("GOOOOAAAL!");
-  //   newDiv.appendChild(newContent);
-  //   const currentDiv = document.getElementById("container");
-  //   document.body.insertAfter(newDiv, currentDiv);
-  // }
+  function validateYES () {
+    const newDiv =document.createElement ("div");
+    const newContent =document.createTextNode("GOOOOAAAL!");
+    newDiv.appendChild(newContent);
+    const currentDiv =document.getElementById("container");
+    document.querySelector('#displayAnswer').appendChild(newDiv);
+  }
 
-  // function validateNO () {
-  //   const newDiv = document.createElement ("div");
-  //   const newContent =document.createTextNode("Ugh! What a missed opportunity!"");
-  //   newDiv.appendChild(newContent);
-  //   const currentDiv = document.getElementById("container");
-  //   document.body.insertAfter(newDiv, currentDiv);
-  // }
+  function validateNO () {
+    const newDiv =document.createElement ("div");
+    const newContent =document.createTextNode("Ugh! What a missed opportunity!");
+    newDiv.appendChild(newContent);
+    const currentDiv =document.getElementById("container");
+    document.querySelector('#displayAnswer').appendChild(newDiv);
+  }
 
-showQuestion()
-showAnswers()
+document.getElementById('startButton').addEventListener("click", function(){
+  showQuestion()
+  showAnswers()
+  document.getElementById('home').style.visibility = "hidden"
+}) 
+
+
+
 
 // PSEUDO CODE!!
 
+
+ // Instead of alert('all done') change the page to say all done
+ 
+  // and show all the high scores
+
+
   // Keep track of the score
   // Save the score to localStorage when the game is done
-  // Subtrack the time if you get the wrong answer
 
-  // Instead of alert('all done') change the page to say all done
-  // and show all the high scores
+ 
 
   // Display the time somewhere
   // Add a timer...
+   // Subtrack the time if you get the wrong answer
