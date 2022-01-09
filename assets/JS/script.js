@@ -10,6 +10,7 @@ var questionHeading =
 var answersList = 
   document.querySelector('#answers')
 var answerScore=0
+var timerDisplay =document.getElementById('countdown')
 
 
 var questions = [
@@ -241,3 +242,22 @@ document.getElementById('startButton').addEventListener("click", function(){
   // Display the time somewhere
   // Add a timer...
    // Subtrack the time if you get the wrong answer
+
+
+   function countdown () {
+     let timeLeft = 120;
+   }
+
+   var timeInterval = setInterval (function(){
+     timeLeft--;
+    timerDisplay.textContent = `{timeLeft} seconds left`;
+     if (timeLeft ===0) { 
+       timerDisplay.textContent = '';
+       clearInterval(timeInterval)
+       displayMessage ()
+     }
+   })
+
+   function displayMessage () {
+
+   }
