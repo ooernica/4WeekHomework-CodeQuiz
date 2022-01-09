@@ -188,16 +188,21 @@ function checkAnswer(correct) {
     validateNO()
   }
   currentQuestion++
-  if (currentQuestion > questions.length - 1) {
+  if (currentQuestion > questions.length-1) {
     document.getElementById('home').style.visibility = "visibility"
-  } else {
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
-    }, 2000)
+    }, 1500)
+  } else { 
+    setTimeout(function() { 
+      document.querySelector('#displayAnswer').innerHTML = ""
+    }, 1500)
     showQuestion()
     showAnswers()
   }
 }
+
+console.log(answerScore)
 
 // display correct/incorrect text by creating div under the questions/answer area + showing text. 
 
@@ -217,6 +222,7 @@ function checkAnswer(correct) {
     document.querySelector('#displayAnswer').appendChild(newDiv);
   }
 
+// changes the screen from the home page to the questions when you click start 
 document.getElementById('startButton').addEventListener("click", function(){
   showQuestion()
   showAnswers()
@@ -226,38 +232,42 @@ document.getElementById('startButton').addEventListener("click", function(){
 
 
 
-// PSEUDO CODE!!
 
+
+// TO DO:
 
  // Instead of alert('all done') change the page to say all done
- 
-  // and show all the high scores
+
+// and show all the high scores
+
+// Keep track of the score
+// Save the score to localStorage when the game is done
+
+// Display the time somewhere
+// Add a timer...
+// Subtrack the time if you get the wrong answer
 
 
-  // Keep track of the score
-  // Save the score to localStorage when the game is done
-
- 
-
-  // Display the time somewhere
-  // Add a timer...
-   // Subtrack the time if you get the wrong answer
+// BROKEN:
+// the answer score is not adding
 
 
-   function countdown () {
-     let timeLeft = 120;
-   }
+  //  attempt at a timer (incomplete):
 
-   var timeInterval = setInterval (function(){
-     timeLeft--;
-    timerDisplay.textContent = `{timeLeft} seconds left`;
-     if (timeLeft ===0) { 
-       timerDisplay.textContent = '';
-       clearInterval(timeInterval)
-       displayMessage ()
-     }
-   })
+  //  function countdown () {
+  //    let timeLeft = 1200;
+  //  }
 
-   function displayMessage () {
+  //  var timeInterval = setInterval (function(){
+  //   timeLeft--;
+  //   timerDisplay.textContent = `{timeLeft} seconds left`;
+  //    if (timeLeft ===0) { 
+  //      timerDisplay.textContent = '';
+  //      clearInterval(timeInterval)
+  //      displayMessage ()
+  //    }
+  //  })
 
-   }
+  //  function displayMessage () {
+
+  //  }
