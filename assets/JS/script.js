@@ -1,16 +1,10 @@
-// Show the first question
-// Show the first answers
-// When you click the answer
-// Show the next question
-// Console.log if it was right or wrong
-
-
-var questionHeading = 
+// variables 
+let questionHeading = 
   document.querySelector('#question')
-var answersList = 
+let answersList = 
   document.querySelector('#answers')
-var answerScore=0
-var timerDisplay =document.getElementById('countdown')
+let answerScore=0
+let timerDisplay =document.getElementById('countdown')
 
 
 var questions = [
@@ -177,19 +171,19 @@ function showAnswers() {
   }
 }
 
-// My job is see if an answer was right or wrong
+
+// My job is check to see an answeer was right or wrong and call the function to display on the screen
 function checkAnswer(correct) {
   if (correct === 'true') {
     // Display correct
-    validateYES()
-    answerScore=answerScore++
+    answerScore ++;
+    validateYES();    
   } else {
     // Display incorrect
     validateNO()
   }
   currentQuestion++
   if (currentQuestion > questions.length-1) {
-    document.getElementById('home').style.visibility = "visibility"
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
     }, 1500)
@@ -201,10 +195,10 @@ function checkAnswer(correct) {
     showAnswers()
   }
 }
-
 console.log(answerScore)
 
-// display correct/incorrect text by creating div under the questions/answer area + showing text. 
+//the actual function to be able to display correct/incorrect text by creating div under the 
+// questions/answer area + showing text. 
 
   function validateYES () {
     const newDiv =document.createElement ("div");
@@ -230,7 +224,11 @@ document.getElementById('startButton').addEventListener("click", function(){
 }) 
 
 
-
+document.getElementById('startOver').addEventListener("click", function(){
+  document.getElementById('home').style.visibility = "visible"
+  document.getElementById('questions').style.visibility = "hidden"
+  document.getElementById('answers').style.visibility = "hidden"
+})
 
 
 
