@@ -1,4 +1,4 @@
-# ErnaPortfolio
+# Colorado Avalanche Quiz
 By: Erna Lukac
 
 # Summary/Description
@@ -17,12 +17,8 @@ This is a a code quiz that I made from scratch, with a timer. The criteria of th
     THEN I can save my initials and my score
 
 
-
-# Link
+# Deployed Link
 https://ooernica.github.io/4WeekHomework-CodeQuiz/
-
-# Contributors
-
 
 # Built With
 HTML, CSS, JS
