@@ -5,6 +5,7 @@ let answersList =
   document.querySelector('#answers')
 let answerScore=0
 let timerDisplay =document.getElementById('countdown')
+let timeLeft = 1000*60*2;
 
 
 var questions = [
@@ -176,17 +177,24 @@ function showAnswers() {
 function checkAnswer(correct) {
   if (correct === 'true') {
     // Display correct
-    answerScore ++;
-    validateYES();    
+    validateYES();
+    answerScore++
   } else {
     // Display incorrect
     validateNO()
+    penalty()
   }
+  console.log(answerScore)
   currentQuestion++
   if (currentQuestion > questions.length-1) {
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
     }, 1500)
+    highscore()
+    timeLeft=0
+    // clearInterval(timeInterv)
+    document.querySelector('#displayScore').classList.remove('hidden')
+    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 120 seconds" 
   } else { 
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
@@ -195,7 +203,6 @@ function checkAnswer(correct) {
     showAnswers()
   }
 }
-console.log(answerScore)
 
 //the actual function to be able to display correct/incorrect text by creating div under the 
 // questions/answer area + showing text. 
@@ -218,54 +225,66 @@ console.log(answerScore)
 
 // changes the screen from the home page to the questions when you click start 
 document.getElementById('startButton').addEventListener("click", function(){
+  startTimer()
   showQuestion()
   showAnswers()
-  document.getElementById('home').style.visibility = "hidden"
+  document.getElementById('home').classList.add("hidden")
 }) 
 
 
 document.getElementById('startOver').addEventListener("click", function(){
-  document.getElementById('home').style.visibility = "visible"
-  document.getElementById('questions').style.visibility = "hidden"
-  document.getElementById('answers').style.visibility = "hidden"
+  document.getElementById('home').classList.remove("hidden")
+  document.getElementById('question').classList.add("hidden")
+  document.getElementById('answers').classList.add("hidden")
 })
 
+function highscore (){
+  document.getElementById('highscorePage').classList.remove("hidden")
+  document.getElementById('question').classList.add("hidden")
+  document.getElementById('answers').classList.add("hidden")
+}
 
+document.getElementById('saveScore').addEventListener('click', function() {
+  let initials = document.querySelector('#initials').value
+  saveScore(timeLeft,initials) 
+})
+  
+  function startTimer(){
+    let timeInterval = setInterval (function(){
+      timeLeft=timeLeft-1000;
+      timerDisplay.textContent = `${formatTime(timeLeft)} seconds left`;
+       if (timeLeft ===0) { 
+         timerDisplay.textContent = '';
+         clearInterval(timeInterval)
+         displayMessage ()
+       }
+     },1000)
+  
+     function displayMessage () {
+  
+     }
+  }
 
-// TO DO:
+   function formatTime (ms) {
+    let seconds = Math.floor(ms/1000);
+    return seconds
+   }
 
- // Instead of alert('all done') change the page to say all done
+   function penalty (){
+    timeLeft=timeLeft-10000;
+   }
 
-// and show all the high scores
+   function saveScore (score,initials) {
+      let highscores = localStorage.getItem('highscores')
+      if (highscores){
+      highscores=JSON.parse(highscores)
+      } else{
+        highscores = []
+      }
+      highscores.push({
+        score,initials
+      })
+      localStorage.setItem("highscores",JSON.stringify(highscores))
+   }
 
-// Keep track of the score
-// Save the score to localStorage when the game is done
-
-// Display the time somewhere
-// Add a timer...
-// Subtrack the time if you get the wrong answer
-
-
-// BROKEN:
-// the answer score is not adding
-
-
-  //  attempt at a timer (incomplete):
-
-  //  function countdown () {
-  //    let timeLeft = 1200;
-  //  }
-
-  //  var timeInterval = setInterval (function(){
-  //   timeLeft--;
-  //   timerDisplay.textContent = `{timeLeft} seconds left`;
-  //    if (timeLeft ===0) { 
-  //      timerDisplay.textContent = '';
-  //      clearInterval(timeInterval)
-  //      displayMessage ()
-  //    }
-  //  })
-
-  //  function displayMessage () {
-
-  //  }
+   

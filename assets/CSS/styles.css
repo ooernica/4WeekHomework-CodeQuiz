@@ -11,3 +11,8 @@ ul {
 .hidden {
     display: none;
 }
+
+#home, .container {
+    text-align: center;
+}
+

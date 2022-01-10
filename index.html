@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="./assets\CSS\styles.css"/>
 </head>
 <body>
+    <h2 id="countdown"></h2>
     <div id="home">
         <h1> Avalanche Quiz! Are you a true fan?</h1>
         <p> Take this Avalanche quiz within the time limit.</br>
             Each time you get an answer wrong, you will be deducted 10 seconds </p>
         <div>
             <button id="startButton"> Start</button>
-            <h2 id="countdown"></h2>
             <button id="highscoreButton"> See Highscores! </button>
         </div>
     </div>
@@ -35,6 +35,11 @@
     <div id="highscorePage" class="hidden">
         <button id="startOver">Start Over</button>
         <button id="clearHS">Clear HighScores</button>
+        <label for="initials">Add initials</label>
+
+<input type="text" id="initials" name="initials"
+       minlength="1" maxlength="2" size="10">
+<button id="saveScore" >Save High Score</button>
     </div>
 
     <script src="./assets\JS\script.js"></script>
