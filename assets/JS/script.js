@@ -5,26 +5,24 @@ let answersList =
   document.querySelector('#answers')
 let answerScore=0
 let timerDisplay =document.getElementById('countdown')
-let timeLeft = 1000*60*2;
-
+let timeLeft = 1000*60*1.5;
 
 // timer
 function startTimer(){
   let timeInterval = setInterval (function(){
     timeLeft=timeLeft-1000;
     timerDisplay.textContent = `${formatTime(timeLeft)} seconds left`;
-     if (timeLeft ===0) { 
+     if ((timeLeft ===0) || (currentQuestion > questions.length-1)) { 
        timerDisplay.textContent = '';
-       clearInterval(timeInterval)
-       displayMessage ()
-     }
+       clearInterval(timeInterval);
+       displayMessage ();
+     } 
    },1000)
    }
 
    function displayMessage () {
-
    }
-}
+
 // formats the time from miliseconds to seconds 
  function formatTime (ms) {
   let seconds = Math.floor(ms/1000);
@@ -219,7 +217,7 @@ function checkAnswer(correct) {
     }, 1500);
     highscore()
     document.querySelector('#displayScore').classList.remove('hidden')
-    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 120 seconds" 
+    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 75 seconds" 
   } else { 
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
@@ -228,6 +226,7 @@ function checkAnswer(correct) {
     showAnswers()
   }
 }
+
 
 //the actual function to be able to display correct/incorrect text by creating div under the 
 // questions/answer area + showing text. 
@@ -295,4 +294,3 @@ document.getElementById('saveScore').addEventListener('click', function() {
   // TO DO
   // display high scores 
   // clear high scores 
-  // get the timer to stop once you answer the last question
