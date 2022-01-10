@@ -191,8 +191,6 @@ function checkAnswer(correct) {
       document.querySelector('#displayAnswer').innerHTML = ""
     }, 1500)
     highscore()
-    timeLeft=0
-    // clearInterval(timeInterv)
     document.querySelector('#displayScore').classList.remove('hidden')
     document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 120 seconds" 
   } else { 
@@ -231,13 +229,15 @@ document.getElementById('startButton').addEventListener("click", function(){
   document.getElementById('home').classList.add("hidden")
 }) 
 
-
+// start over button
 document.getElementById('startOver').addEventListener("click", function(){
   document.getElementById('home').classList.remove("hidden")
   document.getElementById('question').classList.add("hidden")
   document.getElementById('answers').classList.add("hidden")
+  document.getElementById('highscorePage').classList.add('hidden')
 })
 
+// hides all other pages when the highscore page is called 
 function highscore (){
   document.getElementById('highscorePage').classList.remove("hidden")
   document.getElementById('question').classList.add("hidden")
@@ -246,7 +246,7 @@ function highscore (){
 
 document.getElementById('saveScore').addEventListener('click', function() {
   let initials = document.querySelector('#initials').value
-  saveScore(timeLeft,initials) 
+  saveScore(formatTime(timeLeft),initials) 
 })
   
   function startTimer(){
@@ -288,3 +288,6 @@ document.getElementById('saveScore').addEventListener('click', function() {
    }
 
    
+  //  display high scores 
+  // clear high scores 
+  // get the timer to stop once you answer the last question
