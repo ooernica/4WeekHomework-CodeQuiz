@@ -19,6 +19,7 @@ function startTimer(){
        displayMessage ()
      }
    },1000)
+   }
 
    function displayMessage () {
 
@@ -35,7 +36,7 @@ function startTimer(){
   timeLeft=timeLeft-10000;
  }
 
-var questions = [
+let questions = [
   {
     question: 'When did the Avalanche move to Colorado?',
     answers: [
@@ -165,7 +166,7 @@ var questions = [
   }
 ]
 
-var currentQuestion = 0
+let currentQuestion = 0
 
 // My job is to change the question id and answer id
 function showQuestion() {
@@ -178,8 +179,8 @@ function showAnswers() {
   // Display the answer inside the answerList buttons
   // We have to use innerHTML because we are creating, buttons and stuff
   answersList.innerHTML = ''
-  var array = questions[currentQuestion].answers
-  for(var i = 0; i < array.length; i++) {
+  let array = questions[currentQuestion].answers
+  for(let i = 0; i < array.length; i++) {
     answersList.innerHTML += 
       '<li><button class="answer"' +
       ' data-correct="' + 
@@ -188,11 +189,11 @@ function showAnswers() {
       '</button></li>'
   }
 
-  var answerButtons =
+  let answerButtons =
     document.querySelectorAll('.answer')
 
   // How do we get the correct answer
-  for (var j = 0; j < answerButtons.length; j++) {
+  for (let j = 0; j < answerButtons.length; j++) {
     answerButtons[j].addEventListener('click', function(event) {
       checkAnswer(event.target.getAttribute("data-correct"))
     })
@@ -215,7 +216,7 @@ function checkAnswer(correct) {
   if (currentQuestion > questions.length-1) {
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
-    }, 1500)
+    }, 1500);
     highscore()
     document.querySelector('#displayScore').classList.remove('hidden')
     document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 120 seconds" 
@@ -290,8 +291,8 @@ document.getElementById('saveScore').addEventListener('click', function() {
       })
       localStorage.setItem("highscores",JSON.stringify(highscores))
    }
-
    
+  // TO DO
   // display high scores 
   // clear high scores 
   // get the timer to stop once you answer the last question

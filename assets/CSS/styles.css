@@ -12,7 +12,18 @@ ul {
     display: none;
 }
 
-#home, .container {
+#home, .container, #highscorePage {
     text-align: center;
+    padding: 75px;
+}
+
+#displayScore {
+    text-align: center;
+    padding: 10px;
+}
+
+#countdown {
+    text-align: right;
+    padding-top: 5px;
 }
 
