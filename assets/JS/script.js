@@ -8,6 +8,33 @@ let timerDisplay =document.getElementById('countdown')
 let timeLeft = 1000*60*2;
 
 
+// timer
+function startTimer(){
+  let timeInterval = setInterval (function(){
+    timeLeft=timeLeft-1000;
+    timerDisplay.textContent = `${formatTime(timeLeft)} seconds left`;
+     if (timeLeft ===0) { 
+       timerDisplay.textContent = '';
+       clearInterval(timeInterval)
+       displayMessage ()
+     }
+   },1000)
+
+   function displayMessage () {
+
+   }
+}
+// formats the time from miliseconds to seconds 
+ function formatTime (ms) {
+  let seconds = Math.floor(ms/1000);
+  return seconds
+ }
+
+//  time penalty if answer is wrong
+ function penalty (){
+  timeLeft=timeLeft-10000;
+ }
+
 var questions = [
   {
     question: 'When did the Avalanche move to Colorado?',
@@ -184,7 +211,6 @@ function checkAnswer(correct) {
     validateNO()
     penalty()
   }
-  console.log(answerScore)
   currentQuestion++
   if (currentQuestion > questions.length-1) {
     setTimeout(function() { 
@@ -235,6 +261,7 @@ document.getElementById('startOver').addEventListener("click", function(){
   document.getElementById('question').classList.add("hidden")
   document.getElementById('answers').classList.add("hidden")
   document.getElementById('highscorePage').classList.add('hidden')
+  document.getElementById('displayScore').classList.add('hidden')
 })
 
 // hides all other pages when the highscore page is called 
@@ -244,36 +271,13 @@ function highscore (){
   document.getElementById('answers').classList.add("hidden")
 }
 
+// save score
 document.getElementById('saveScore').addEventListener('click', function() {
   let initials = document.querySelector('#initials').value
   saveScore(formatTime(timeLeft),initials) 
 })
-  
-  function startTimer(){
-    let timeInterval = setInterval (function(){
-      timeLeft=timeLeft-1000;
-      timerDisplay.textContent = `${formatTime(timeLeft)} seconds left`;
-       if (timeLeft ===0) { 
-         timerDisplay.textContent = '';
-         clearInterval(timeInterval)
-         displayMessage ()
-       }
-     },1000)
-  
-     function displayMessage () {
-  
-     }
-  }
 
-   function formatTime (ms) {
-    let seconds = Math.floor(ms/1000);
-    return seconds
-   }
-
-   function penalty (){
-    timeLeft=timeLeft-10000;
-   }
-
+  //  save score to local storage
    function saveScore (score,initials) {
       let highscores = localStorage.getItem('highscores')
       if (highscores){
@@ -288,6 +292,6 @@ document.getElementById('saveScore').addEventListener('click', function() {
    }
 
    
-  //  display high scores 
+  // display high scores 
   // clear high scores 
   // get the timer to stop once you answer the last question
