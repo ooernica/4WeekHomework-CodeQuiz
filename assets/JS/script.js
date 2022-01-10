@@ -289,14 +289,15 @@ document.getElementById('saveScore').addEventListener('click', function() {
         score,initials
       })
       localStorage.setItem("highscores",JSON.stringify(highscores))
+      window.location.replace)
    }
   
-
-  // clear high scores 
+   // clear high scores in local storage
 document.getElementById('clearHS').addEventListener('click', function() {
   localStorage.clear()
 })
   
 
-// Bugs
+// to do / bug
+// display local storage to page / clear from page when local storage is cleared
 // can't retake quiz after finishing, must refresh
