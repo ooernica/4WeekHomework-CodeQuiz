@@ -217,7 +217,7 @@ function checkAnswer(correct) {
     }, 1500);
     highscore()
     document.querySelector('#displayScore').classList.remove('hidden')
-    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 75 seconds" 
+    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 90 seconds" 
   } else { 
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
@@ -290,7 +290,13 @@ document.getElementById('saveScore').addEventListener('click', function() {
       })
       localStorage.setItem("highscores",JSON.stringify(highscores))
    }
-   
-  // TO DO
-  // display high scores 
+  
+
   // clear high scores 
+document.getElementById('clearHS').addEventListener('click', function() {
+  localStorage.clear()
+})
+  
+
+// Bugs
+// can't retake quiz after finishing, must refresh
