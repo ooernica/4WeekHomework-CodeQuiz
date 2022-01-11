@@ -289,8 +289,7 @@ document.getElementById('saveScore').addEventListener('click', function() {
         score,initials
       })
       localStorage.setItem("highscores",JSON.stringify(highscores))
-      window.location.replace)
-   }
+     }
   
    // clear high scores in local storage
 document.getElementById('clearHS').addEventListener('click', function() {
