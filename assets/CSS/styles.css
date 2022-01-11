@@ -12,7 +12,7 @@ ul {
     display: none;
 }
 
-#home, .container, #highscorePage {
+#home, .container, #highscorePage, #takemeHome {
     text-align: center;
     padding: 75px;
 }

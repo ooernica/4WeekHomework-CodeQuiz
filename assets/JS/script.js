@@ -6,6 +6,7 @@ let answersList =
 let answerScore=0
 let timerDisplay =document.getElementById('countdown')
 let timeLeft = 1000*60*1.5;
+const ul = document.querySelector('ul')
 
 // timer
 function startTimer(){
@@ -280,6 +281,7 @@ document.getElementById('saveScore').addEventListener('click', function() {
   let initials = document.querySelector('#initials').value
   saveScore(formatTime(timeLeft + 1000),initials) 
   highscore ();
+  document.querySelector("initials").innerHTML = " "
 })
 
   //  save score to local storage
@@ -296,29 +298,40 @@ document.getElementById('saveScore').addEventListener('click', function() {
       localStorage.setItem("highscores",JSON.stringify(highscores))
      }
   
-   // clear high scores in local storage
-document.getElementById('clearHS').addEventListener('click', function() {
-  localStorage.clear()
-})
-
-// display local storage highscores onto high score page
-function getscoreHighscores () {
-  window.localStorage.getItem('highscores')
-  JSON.parse(window.localStorage.getItem('highscores'))
+// display local storage highscores onto the highscore page
+function getScores () {
+  let leaderboard = JSON.parse(window.localStorage.getItem('highscores'))
+  for (let s = 0 ; s < leaderboard.length; s ++) {
+    let BLA = (leaderboard[s].initials) + "  " + ( leaderboard[s].score);
+    makeList(BLA)
+  }
 }
 
-// when you submit your initials and score, you are taken to the leaderboard
+const makeList = (text) => {
+  const ol = document.createElement('li')
+  ol.textContent = text
+  ul.appendChild(ol)
+}
+
+// when you submit your initials and score, you are taken to the highscore page
 document.getElementById('saveScore').addEventListener('click', function() {
-  document.getElementById('takemeHome').classList.remove("hidden")
-  document.getElementById('displayScore').classList.add("hidden")
-  document.querySelector('#highscorePage').innerHTML = " " 
+  document.getElementById('takemeHome').classList.remove("hidden");
+  document.getElementById('displayScore').classList.add("hidden");
+  document.querySelector('highscorePage').innerHTML = " ";
+  getScores()
 })
 
+// when you click see highscores, you are taken to the highscore page
+document.getElementById('highscoreButton').addEventListener('click', function() {
+  document.getElementById('home').classList.add('hidden')
+  document.getElementById('highscorePage').classList.remove("hidden")
+  document.getElementById('takemeHome').classList.remove("hidden")
+  getScores()
+})
 
-
-
-
-// to do / bug
-// display local storage to page / clear from page when local storage is cleared
-// timer needs to shut quiz off if time limit is reached
-// clear date from enter initial box after you submit 
+   // clear high scores in local storage
+   document.getElementById('clearHS').addEventListener('click', function() {
+    localStorage.clear()
+    window.location.reload()
+    }
+  )
