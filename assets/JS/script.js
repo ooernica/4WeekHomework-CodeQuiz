@@ -6,7 +6,7 @@ let answersList =
 let answerScore=0
 let timerDisplay =document.getElementById('countdown')
 let timeLeft = 1000*60*1.5;
-const ul = document.querySelector('ul')
+const ul = document.getElementById('list')
 
 // timer
 function startTimer(){
@@ -316,8 +316,8 @@ const makeList = (text) => {
 // when you submit your initials and score, you are taken to the highscore page
 document.getElementById('saveScore').addEventListener('click', function() {
   document.getElementById('takemeHome').classList.remove("hidden");
+  document.getElementById('highscorePage').classList.remove("hidden");
   document.getElementById('displayScore').classList.add("hidden");
-  document.querySelector('highscorePage').innerHTML = " ";
   getScores()
 })
 
@@ -330,8 +330,7 @@ document.getElementById('highscoreButton').addEventListener('click', function() 
 })
 
    // clear high scores in local storage
-   document.getElementById('clearHS').addEventListener('click', function() {
-    localStorage.clear()
-    window.location.reload()
-    }
-  )
+document.getElementById('clearHS').addEventListener('click', function() {
+  localStorage.clear()
+  window.location.reload()
+    })
