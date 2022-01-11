@@ -216,8 +216,8 @@ function checkAnswer(correct) {
       document.querySelector('#displayAnswer').innerHTML = ""
     }, 1500);
     highscore()
-    document.querySelector('#displayScore').classList.remove('hidden')
-    document.querySelector('#displayScore').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 90 seconds" 
+    document.querySelector('#highscorePage').classList.remove('hidden')
+    document.querySelector('#highscorePage').innerHTML = answerScore + " out of 5 and " + formatTime(timeLeft) + " out of 90 seconds" 
   } else { 
     setTimeout(function() { 
       document.querySelector('#displayAnswer').innerHTML = ""
@@ -255,26 +255,31 @@ document.getElementById('startButton').addEventListener("click", function(){
   document.getElementById('home').classList.add("hidden")
 }) 
 
+window.onload = function(){
+  document.getElementById("home").classList.remove("hidden")
+}
+
 // start over button
 document.getElementById('startOver').addEventListener("click", function(){
   document.getElementById('home').classList.remove("hidden")
-  document.getElementById('question').classList.add("hidden")
-  document.getElementById('answers').classList.add("hidden")
-  document.getElementById('highscorePage').classList.add('hidden')
   document.getElementById('displayScore').classList.add('hidden')
+  document.getElementById('highscorePage').classList.add('hidden')
+  document.getElementById('takemeHome').classList.add('hidden')
+  window.location.reload()
 })
 
-// hides all other pages when the highscore page is called 
+// hides all other pages and displays score enter page
 function highscore (){
-  document.getElementById('highscorePage').classList.remove("hidden")
+  document.getElementById('displayScore').classList.remove("hidden")
   document.getElementById('question').classList.add("hidden")
   document.getElementById('answers').classList.add("hidden")
 }
 
-// save score
+// save score to local storage and bring up high score page when you click submit
 document.getElementById('saveScore').addEventListener('click', function() {
   let initials = document.querySelector('#initials').value
-  saveScore(formatTime(timeLeft),initials) 
+  saveScore(formatTime(timeLeft + 1000),initials) 
+  highscore ();
 })
 
   //  save score to local storage
@@ -295,8 +300,25 @@ document.getElementById('saveScore').addEventListener('click', function() {
 document.getElementById('clearHS').addEventListener('click', function() {
   localStorage.clear()
 })
-  
+
+// display local storage highscores onto high score page
+function getscoreHighscores () {
+  window.localStorage.getItem('highscores')
+  JSON.parse(window.localStorage.getItem('highscores'))
+}
+
+// when you submit your initials and score, you are taken to the leaderboard
+document.getElementById('saveScore').addEventListener('click', function() {
+  document.getElementById('takemeHome').classList.remove("hidden")
+  document.getElementById('displayScore').classList.add("hidden")
+  document.querySelector('#highscorePage').innerHTML = " " 
+})
+
+
+
+
 
 // to do / bug
 // display local storage to page / clear from page when local storage is cleared
-// can't retake quiz after finishing, must refresh
+// timer needs to shut quiz off if time limit is reached
+// clear date from enter initial box after you submit 

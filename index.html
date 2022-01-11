@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2 id="countdown"></h2>
-    <div id="home">
+    <div id="home" class="hidden">
         <h1> Avalanche Quiz! Are you a true fan?</h1>
         <p> Take this Avalanche quiz within the time limit.</br>
             Each time you get an answer wrong, your time will be deducted 10 seconds </p>
@@ -26,12 +26,16 @@
         </div>
     </div>
 
-    <div id="displayScore" class="hidden">
+    <div id="highscorePage" class="hidden">
+
+    </div>
+
+    <div id="takemeHome" class="hidden">
         <button id="clearHS">Clear HighScores</button>
         <button id="startOver">Start Over</button>
     </div>
 
-    <div id="highscorePage" class="hidden">
+    <div id="displayScore" class="hidden">
         <label for="initials">Add initials</label>
         <input type="text" id="initials" name="initials" minlength="1" maxlength="2" size="10">
         <button id="saveScore" >Save High Score</button>
