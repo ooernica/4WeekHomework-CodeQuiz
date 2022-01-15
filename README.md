@@ -1,5 +1,5 @@
 # Colorado Avalanche Quiz
-By: Erna Lukac
+By: Erna Lukač
 
 # Summary/Description
 This is a a code quiz that I made from scratch, with a timer. The criteria of the homework is as follows:
